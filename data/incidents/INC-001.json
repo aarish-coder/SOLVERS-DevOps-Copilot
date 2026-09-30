@@ -1,0 +1,20 @@
+[
+  {
+    "incident_id": "INC-018",
+    "service": "payment-service",
+    "severity": "high",
+    "root_cause": "Database connection configuration issue",
+    "action_taken": "Rollback to v2.3",
+    "result": "resolved",
+    "notes": "Similar database connection failures occurred immediately after a deployment."
+  },
+  {
+    "incident_id": "INC-011",
+    "service": "payment-service",
+    "severity": "medium",
+    "root_cause": "Database connectivity degradation",
+    "action_taken": "Restart database connection pool",
+    "result": "resolved",
+    "notes": "Temporary database connection failures affected payment requests."
+  }
+]

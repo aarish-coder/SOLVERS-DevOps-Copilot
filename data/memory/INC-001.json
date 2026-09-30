@@ -1,0 +1,31 @@
+{
+  "incident_id": "INC-001",
+  "probable_cause": "Recent deployment introduced a database connection problem",
+  "confidence": 0.95,
+  "severity": "critical",
+  "action": {
+    "action_id": "ACT-ROLLBACK",
+    "action": "rollback",
+    "target": "payment-service"
+  },
+  "execution": {
+    "executed": true,
+    "message": "Simulated rollback of payment-service from v2.4 to v2.3 completed."
+  },
+  "verification": {
+    "recovered": true,
+    "before": {
+      "status": "degraded",
+      "error_rate_percent": 82,
+      "latency_ms": 4800,
+      "db_failures_per_minute": 64
+    },
+    "after": {
+      "status": "healthy",
+      "error_rate_percent": 3,
+      "latency_ms": 700,
+      "db_failures_per_minute": 0
+    },
+    "message": "Recovery verified successfully."
+  }
+}

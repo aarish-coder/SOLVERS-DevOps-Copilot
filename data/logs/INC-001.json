@@ -1,0 +1,38 @@
+[
+  {
+    "timestamp": "2026-09-30T10:40:00",
+    "service": "payment-service",
+    "level": "INFO",
+    "message": "Deployment v2.4 completed successfully"
+  },
+  {
+    "timestamp": "2026-09-30T10:41:00",
+    "service": "payment-service",
+    "level": "ERROR",
+    "message": "Database connection timeout"
+  },
+  {
+    "timestamp": "2026-09-30T10:41:20",
+    "service": "payment-service",
+    "level": "ERROR",
+    "message": "Failed to establish database connection"
+  },
+  {
+    "timestamp": "2026-09-30T10:42:00",
+    "service": "payment-service",
+    "level": "ERROR",
+    "message": "HTTP 500 Internal Server Error"
+  },
+  {
+    "timestamp": "2026-09-30T10:42:10",
+    "service": "payment-service",
+    "level": "ERROR",
+    "message": "Database connection refused"
+  },
+  {
+    "timestamp": "2026-09-30T10:42:30",
+    "service": "payment-service",
+    "level": "ERROR",
+    "message": "HTTP 500 Internal Server Error"
+  }
+]

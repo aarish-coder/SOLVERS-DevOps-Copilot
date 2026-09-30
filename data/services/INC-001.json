@@ -1,0 +1,13 @@
+{
+  "service": "payment-service",
+  "status": "degraded",
+  "error_rate_percent": 82,
+  "latency_ms": 4800,
+  "db_failures_per_minute": 64,
+  "cpu_percent": 61,
+  "memory_percent": 68,
+  "dependency_status": {
+    "database": "unhealthy",
+    "payment_gateway": "healthy"
+  }
+}

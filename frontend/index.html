@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SOLVERS — AI Incident Response</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+    <div>
+        <h1>SOLVERS</h1>
+        <p>Safety-Gated AI Incident Response</p>
+    </div>
+
+    <div class="system-status">
+        <span class="status-dot"></span>
+        SYSTEM ONLINE
+    </div>
+</header>
+
+
+<main class="container">
+
+    <!-- INCIDENT CONTROL -->
+    <section class="control-panel">
+        <div>
+            <label for="incidentId">Incident ID</label>
+
+            <input
+                id="incidentId"
+                value="INC-001"
+                placeholder="e.g. INC-001"
+            />
+        </div>
+
+        <button id="investigateBtn" class="primary-btn">
+            Investigate Incident
+        </button>
+    </section>
+
+
+    <!-- INCIDENT SUMMARY -->
+    <section class="section">
+        <div class="section-title">
+            <h2>Incident Overview</h2>
+            <span id="incidentStatus" class="badge">WAITING</span>
+        </div>
+
+        <div class="metrics-grid">
+
+            <div class="metric-card">
+                <span>Service</span>
+                <strong id="serviceName">—</strong>
+            </div>
+
+            <div class="metric-card">
+                <span>Severity</span>
+                <strong id="severity">—</strong>
+            </div>
+
+            <div class="metric-card">
+                <span>Error Rate</span>
+                <strong id="errorRate">—</strong>
+            </div>
+
+            <div class="metric-card">
+                <span>Latency</span>
+                <strong id="latency">—</strong>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- WORKFLOW TIMELINE -->
+    <section class="section">
+
+        <div class="section-title">
+            <h2>Response Timeline</h2>
+        </div>
+
+        <div class="timeline">
+
+            <div class="timeline-item" id="step-investigation">
+                <div class="step-number">1</div>
+                <div>
+                    <strong>Investigation</strong>
+                    <p>Collecting operational evidence</p>
+                </div>
+            </div>
+
+            <div class="timeline-item" id="step-rca">
+                <div class="step-number">2</div>
+                <div>
+                    <strong>Root Cause Analysis</strong>
+                    <p>Evaluating possible causes</p>
+                </div>
+            </div>
+
+            <div class="timeline-item" id="step-action">
+                <div class="step-number">3</div>
+                <div>
+                    <strong>Action Planning</strong>
+                    <p>Generating remediation options</p>
+                </div>
+            </div>
+
+            <div class="timeline-item" id="step-safety">
+                <div class="step-number">4</div>
+                <div>
+                    <strong>Safety Gate</strong>
+                    <p>Validating remediation risk</p>
+                </div>
+            </div>
+
+            <div class="timeline-item" id="step-approval">
+                <div class="step-number">5</div>
+                <div>
+                    <strong>Human Approval</strong>
+                    <p>Waiting for authorized decision</p>
+                </div>
+            </div>
+
+            <div class="timeline-item" id="step-execution">
+                <div class="step-number">6</div>
+                <div>
+                    <strong>Remediation</strong>
+                    <p>Executing approved action</p>
+                </div>
+            </div>
+
+            <div class="timeline-item" id="step-verification">
+                <div class="step-number">7</div>
+                <div>
+                    <strong>Recovery Verification</strong>
+                    <p>Checking whether recovery succeeded</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EVIDENCE -->
+    <section class="section">
+
+        <div class="section-title">
+            <h2>Evidence Collected</h2>
+        </div>
+
+        <div id="evidenceGrid" class="evidence-grid">
+
+            <div class="evidence-card">
+                <strong>Application Logs</strong>
+                <span>Waiting</span>
+            </div>
+
+            <div class="evidence-card">
+                <strong>Deployment History</strong>
+                <span>Waiting</span>
+            </div>
+
+            <div class="evidence-card">
+                <strong>Service Health</strong>
+                <span>Waiting</span>
+            </div>
+
+            <div class="evidence-card">
+                <strong>Previous Incidents</strong>
+                <span>Waiting</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RCA -->
+    <section class="section">
+
+        <div class="section-title">
+            <h2>Root Cause Analysis</h2>
+        </div>
+
+        <div class="rca-main">
+
+            <div>
+                <span class="small-label">PROBABLE ROOT CAUSE</span>
+
+                <h3 id="probableCause">
+                    Waiting for investigation...
+                </h3>
+            </div>
+
+            <div class="confidence-box">
+                <span>CONFIDENCE</span>
+                <strong id="confidence">—</strong>
+            </div>
+
+        </div>
+
+        <div id="reasoning" class="reasoning">
+            No reasoning available.
+        </div>
+
+        <h3 class="subheading">Alternative Hypotheses</h3>
+
+        <div id="hypotheses" class="hypotheses">
+            No hypotheses available.
+        </div>
+
+    </section>
+
+
+    <!-- ACTION -->
+    <section class="section">
+
+        <div class="section-title">
+            <h2>Remediation Plan</h2>
+        </div>
+
+        <div class="action-box">
+
+            <div>
+                <span class="small-label">RECOMMENDED ACTION</span>
+
+                <h3 id="actionName">
+                    Waiting...
+                </h3>
+
+                <p id="actionReason">
+                    —
+                </p>
+            </div>
+
+            <div class="risk-box">
+                <span>RISK</span>
+                <strong id="riskLevel">—</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SAFETY -->
+    <section class="section">
+
+        <div class="section-title">
+            <h2>Safety Gate</h2>
+            <span id="safetyDecision" class="badge">WAITING</span>
+        </div>
+
+        <div id="safetyChecks" class="checks">
+            No safety checks performed.
+        </div>
+
+        <div class="approval-panel">
+
+            <div>
+                <strong>Human Authorization</strong>
+
+                <p id="approvalMessage">
+                    Approval required for risky remediation actions.
+                </p>
+            </div>
+
+            <button
+                id="approveBtn"
+                class="approve-btn"
+                disabled
+            >
+                APPROVE & EXECUTE
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- RECOVERY -->
+    <section class="section">
+
+        <div class="section-title">
+            <h2>Recovery Verification</h2>
+            <span id="recoveryStatus" class="badge">WAITING</span>
+        </div>
+
+        <div class="comparison-grid">
+
+            <div class="comparison-card before">
+                <h3>BEFORE</h3>
+
+                <p>
+                    Error Rate:
+                    <strong id="beforeError">—</strong>
+                </p>
+
+                <p>
+                    Latency:
+                    <strong id="beforeLatency">—</strong>
+                </p>
+
+                <p>
+                    DB Failures:
+                    <strong id="beforeDb">—</strong>
+                </p>
+            </div>
+
+
+            <div class="comparison-card after">
+                <h3>AFTER</h3>
+
+                <p>
+                    Error Rate:
+                    <strong id="afterError">—</strong>
+                </p>
+
+                <p>
+                    Latency:
+                    <strong id="afterLatency">—</strong>
+                </p>
+
+                <p>
+                    DB Failures:
+                    <strong id="afterDb">—</strong>
+                </p>
+            </div>
+
+        </div>
+
+        <div id="recoveryMessage" class="recovery-message">
+            Recovery has not been verified.
+        </div>
+
+    </section>
+
+
+    <!-- INCIDENT REPORT -->
+    <section class="section">
+
+        <div class="section-title">
+            <h2>Incident Report</h2>
+        </div>
+
+        <pre id="report" class="report">
+Report will appear after recovery verification.
+        </pre>
+
+    </section>
+
+</main>
+
+
+<div id="toast" class="toast"></div>
+
+
+<script src="/static/app.js"></script>
+
+</body>
+</html>
